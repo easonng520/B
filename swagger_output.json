@@ -5,7 +5,7 @@
     "description": "Description",
     "version": "1.0.0"
   },
-  "host": "https://backend.easonng520.repl.co/",
+  "host": "https://b.easonng520.repl.co/",
   "basePath": "/",
   "schemes": [
     "https"
@@ -216,12 +216,32 @@
         }
       }
     },
-    "/favourite": {
+    "/CatsListfavourites": {
       "get": {
         "description": "",
         "parameters": [
           {
-            "name": "favourite",
+            "name": "list",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/favouritesAll": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "breed",
             "in": "query",
             "type": "string"
           }

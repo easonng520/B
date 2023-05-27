@@ -4,7 +4,7 @@ const doc = {
     title: 'loveCATS API',
     description: 'Description',
   },
-  host: 'https://backend.easonng520.repl.co/',
+  host: 'https://b.easonng520.repl.co/',
   schemes: ['https'],
 };
 const outputFile = './swagger_output.json'
