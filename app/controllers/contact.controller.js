@@ -174,6 +174,7 @@ exports.findCentre = (req, res) => {
 exports.findBreed = (req, res) => {
   const breed = req.query.breed;
   var condition = breed ? { breed: { [Op.iLike]: `%${breed}%` } } : null;
+console.log(condition)
   Cat.findAll({ where: condition })
     .then(data => {
       res.send(data);
@@ -187,9 +188,10 @@ exports.findBreed = (req, res) => {
 };
 
 // Retrieve Favourite Cats from the database.
-exports.findFavouritesAll = (req, res) => {
-  const breed = req.query.breed;
-  var condition = breed ? { breed: { [Op.iLike]: `%${breed}%` } } : null;
+exports.findFavourites = (req, res) => {
+  const favourite = req.query.favourite;
+  var condition = favourite ? { centre: { [Op.iLike]: `%${favourite}%` } } : null;
+console.log(condition)
   Cat.findAll({ where: condition })
     .then(data => {
       res.send(data);
@@ -199,31 +201,7 @@ exports.findFavouritesAll = (req, res) => {
         message:
           err.message || "Some error occurred while retrieving cats."
       });
-    });   
-};
-
-exports.CatsListfavourites = (req, res) => {
-  
- const list = req.query.list
- const array = JSON.parse("["+list+"]");
-    //console.log(array)
-let result = array.map(i=>Number(i));
-//  console.log(result)
-  Cat.findAll({ where: {
-    id: { [Op.in]: result },
-  }, })
-    .then(data => {
-      res.send(data);
-    })
-    .catch(err => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while retrieving cats."
-      });
     });
+  
 };
-
-
-
-
 
