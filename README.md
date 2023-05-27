@@ -25,7 +25,7 @@ npm run swagger-autogen
 https://medium.com/@yyc4code/js-在express中設定eslint-caec89272dbe
 https://eslint.org/docs/latest/use/getting-started
 npm init @eslint/config
-npx eslint yourfile.js
+npx eslint server.js
 
 
 
