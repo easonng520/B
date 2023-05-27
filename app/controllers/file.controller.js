@@ -1,6 +1,6 @@
 const uploadFile = require("../middleware/upload");
 const fs = require("fs");
-const baseUrl = "https://backend.easonng520.repl.co/api/files/";
+const baseUrl = "https://b.easonng520.repl.co/api/files/";
 const upload = async (req, res) => {
   try {
     await uploadFile(req, res);
