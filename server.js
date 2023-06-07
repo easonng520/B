@@ -3,8 +3,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const app = express();
 
-const swaggerUi = require('swagger-ui-express')
-const swaggerFile = require('./swagger_output.json')
+
 
 //var path = require("path");
 var cookieParser = require("cookie-parser");
@@ -14,7 +13,7 @@ app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerFile))
+
 
 
 global.__basedir = __dirname;
