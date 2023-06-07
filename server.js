@@ -27,13 +27,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // database
 const db = require("./app/models");
-
 const Message = db.messages;
+const Event = db.events;
 
- db.sequelize.sync();
+db.sequelize.sync();
 // force: true will drop the table if it already exists
-
-
 db.sequelize.sync({force: true}).then(() => {
   console.log('Drop and Resync Database with { force: true }');
   initial();
@@ -42,11 +40,12 @@ db.sequelize.sync({force: true}).then(() => {
 
 // simple route
 app.get("/", (req, res) => {
-  res.json({ message: "Welcome to loveCATS application." });
+  res.json({ message: "Welcome to GoTrekking application." });
 });
 
 // routes
 require("./app/routes/message.routes")(app);
+require("./app/routes/event.routes")(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
@@ -60,23 +59,13 @@ function initial() {
     reply: "Reply 1",
 catid:2
   });
-    
- Message.create({
-    message:"Message 2",
-      reply: "Reply 2",
-catid:1
-  });
 
- Message.create({
-    message:"Message 3",
-    catid:3
-  });
   
-  Message.create({
-    message:"Message 4",
-      reply: "Reply 4",
-catid:1
-  });
-   
+   Event.create({
+    name:"GoTrekking",
+    date:"2023-08-27 13:00:00:00"
+
+  });  
+ 
   
 }
