@@ -25,5 +25,6 @@ db.sequelize = sequelize;
 
 
 db.events = require("../models/event.model.js")(sequelize, Sequelize);
+db.trekkers = require("../models/trekker.model.js")(sequelize, Sequelize);
 
 module.exports = db;

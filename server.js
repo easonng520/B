@@ -28,8 +28,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // database
 const db = require("./app/models");
 const Event = db.events;
+const Trekker = db.trekkers;
 
-db.sequelize.sync();
+//db.sequelize.sync();
 // force: true will drop the table if it already exists
 db.sequelize.sync({force: true}).then(() => {
   console.log('Drop and Resync Database with { force: true }');
@@ -44,6 +45,8 @@ app.get("/", (req, res) => {
 
 // routes
 require("./app/routes/event.routes")(app);
+require("./app/routes/trekker.routes")(app);
+
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
@@ -53,12 +56,16 @@ app.listen(PORT, () => {
 
 function initial() {
  
-  
+ 
    Event.create({
     name:"GoTrekking",
     date:"2023-08-27 13:00:00:00"
-
   });  
- 
+
+     Trekker.create({
+    name:"Eason",
+       email:"a@a.com",
+    code:"000000"
+  });  
   
 }
