@@ -2,34 +2,19 @@ const db = require("../models");
 const Event = db.events;
 const Op = db.Sequelize.Op;
 
-// Create and Save a new Cat
+// Create and Save a new Event
 exports.create = (req, res) => {
-  // Validate request
-  /*
-  if (!req.body.message) {
-    res.status(400).send({
-      message: "Content can not be empty!"
-   });
-    return;
-  }
-*/
-
-     const bodyFavourites = req.body.message;
-  const paramsFavourites = req.params.message;
-    const queryFavourites = req.query.message;
-   console.log('bodyFavourites:'+bodyFavourites)
-   console.log('paramsFavourites:'+paramsFavourites)
-  console.log('queryFavourites:'+queryFavourites)
+ 
   
-  // Create a Cat
-  const message = {
-    name: req.query.message,
-    date: req.query.catid
+  // Create a Event
+  const event = {
+    name: req.query.name,
+    date: req.query.date
 
   };
-  console.log(message)
-  // Save Cat in the database
-  Event.create(message)
+  console.log(event)
+  // Save Event in the database
+  Event.create(event)
     .then(data => {
       res.send(data);
     })
@@ -41,7 +26,7 @@ exports.create = (req, res) => {
     });
 };
 
-// Retrieve all Cats from the database.
+// Retrieve all Event from the database.
 exports.findAll = (req, res) => {
   const name = req.query.name;
   var condition = name ? { name: { [Op.iLike]: `%${name}%` } } : null;
@@ -59,21 +44,14 @@ exports.findAll = (req, res) => {
 
 
 
-// Update a Cat by the id in the request
+// Update a Event by the id in the request
 exports.update = (req, res) => {
 
   
   const id = req.params.id;
 console.log("paramsid"+id)
  
-     const bodyMessage = req.body.message;
-  const paramsMessage = req.params.message;
-    const queryMessage = req.query.message;
-   console.log('bodyMessage:'+bodyMessage)
-   console.log('paramsMessage:'+paramsMessage)
-  console.log('queryMessage:'+queryMessage)
-  
- 
+
     Event.update({message:queryMessage}, {
     where: { id: id }
   })

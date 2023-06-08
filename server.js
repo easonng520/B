@@ -27,7 +27,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // database
 const db = require("./app/models");
-const Message = db.messages;
 const Event = db.events;
 
 db.sequelize.sync();
@@ -44,7 +43,6 @@ app.get("/", (req, res) => {
 });
 
 // routes
-require("./app/routes/message.routes")(app);
 require("./app/routes/event.routes")(app);
 
 // set port, listen for requests
@@ -54,12 +52,7 @@ app.listen(PORT, () => {
 });
 
 function initial() {
-  Message.create({
-   message:"Message 1",
-    reply: "Reply 1",
-catid:2
-  });
-
+ 
   
    Event.create({
     name:"GoTrekking",
