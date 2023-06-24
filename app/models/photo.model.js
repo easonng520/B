@@ -9,11 +9,8 @@ module.exports = (sequelize, Sequelize) => {
     code: {
       type: Sequelize.STRING,
     },
-    step: {
-      type: Sequelize.DOUBLE,
-    },
-        distance: {
-      type: Sequelize.DOUBLE,
+    url: {
+      type: Sequelize.STRING,
     }
      
   });

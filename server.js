@@ -29,6 +29,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const db = require("./app/models");
 const Event = db.events;
 const Trekker = db.trekkers;
+const Photo = db.photos;
 
 //db.sequelize.sync();
 // force: true will drop the table if it already exists
@@ -46,6 +47,7 @@ app.get("/", (req, res) => {
 // routes
 require("./app/routes/event.routes")(app);
 require("./app/routes/trekker.routes")(app);
+require("./app/routes/photo.routes")(app);
 
 
 // set port, listen for requests
@@ -59,7 +61,15 @@ function initial() {
  
    Event.create({
     name:"GoTrekking",
-    date:"2023-08-27 13:00:00:00"
+    date:"2023-06-24 21:55:00:00 UTC",
+    completed:"false"
+  });  
+
+     
+   Event.create({
+    name:"Go",
+    date:"2025-08-27 13:00:00:00 UTC",
+    completed:"false"
   });  
 
      Trekker.create({
@@ -67,5 +77,12 @@ function initial() {
        email:"a@a.com",
     code:"000000"
   });  
-  
+/*
+       Photo.create({
+    name:"Eason",
+       email:"a@a.com",
+    code:"000000",
+         url:"https://files.catbox.moe/25ep0u.png"
+  });  
+  */
 }

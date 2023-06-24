@@ -43,6 +43,19 @@ exports.findAll = (req, res) => {
 };
 
 
+// Find a single Cat with an id
+exports.findOne = (req, res) => {
+  const id = req.params.id;
+ Event.findByPk(id)
+    .then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message: "Error retrieving Event with id=" + id
+      });
+    });
+};
 
 // Update a Event by the id in the request
 exports.update = (req, res) => {

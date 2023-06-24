@@ -1,5 +1,5 @@
 const db = require("../models");
-const Trekker = db.trekkers;
+const Photo = db.photos;
 const Op = db.Sequelize.Op;
   var xcode=Math.floor(100000 + Math.random() * 900000)
 
@@ -11,17 +11,16 @@ console.log(req.params.email)
 console.log(req.query.email)
   var email=req.body.email
   // Create a Event
-  const trekker = {
+  const photo = {
     nickname: req.body.nickname,
     email: email,
     code:xcode,
-     step:req.body.code,
-     distance:req.body.code
+     url:url.body.code
 
   };
-  console.log(trekker)
+  console.log(photo)
   // Save Event in the database
-  Trekker.create(trekker)
+  Photo.create(photo)
     .then(data => {
       res.send(data);
 
@@ -29,40 +28,7 @@ console.log(req.query.email)
 
 
 
-var nodemailer = require('nodemailer');
 
-var transporter = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-    user: 'easonng',
-    pass: 'mbougnuetabojikz'
-  }
-});
-
-var mailOptions = {
-  from: 'easonng@gmail.com',
- to: `${email}`,
-  //to: 'easonng@surgery.cuhk.edu.hk',
-  subject: `your passCODE: ${xcode}`,
-  text: `your passCODE: ${xcode}`
-};
-
-transporter.sendMail(mailOptions, function(error, info){
-  if (error) {
-    console.log(error);
-  } else {
-    console.log('Email sent: ' + info.response);
-  }
-});
-      
-    })
-    .catch(err => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while creating the Message."
-      });
-    });
-};
 
 // Retrieve all Event from the database.
 exports.findAll = (req, res) => {

@@ -4,9 +4,12 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.STRING,
     },
     date: {
-      type: Sequelize.DATE,
+      type: Sequelize.STRING,
+    },
+    completed: {
+      type: Sequelize.STRING,
     }
-     
+
   });
 
   return Event;
